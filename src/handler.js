@@ -85,21 +85,21 @@ const getAllBooksHandler = (request, h) => {
     );
   }
 
+ if (typeof reading !== 'undefined') {
   if (reading === false) {
     filteredBooks = filteredBooks.filter((book) => book.reading === false);
   } else if (reading === true) {
     filteredBooks = filteredBooks.filter((book) => book.reading === true);
   }
+}
 
+if (typeof finished !== 'undefined') {
   if (finished === false) {
-    filteredBooks = filteredBooks.filter(
-      (book) => book.finished === false
-    );
+    filteredBooks = filteredBooks.filter((book) => book.finished === false);
   } else if (finished === true) {
-    filteredBooks = filteredBooks.filter(
-      (book) => book.finished === true
-    );
+    filteredBooks = filteredBooks.filter((book) => book.finished === true);
   }
+}
 
   const booksToReturn =
     filteredBooks.length >= 2 ? filteredBooks.slice(0, 2) : []; // Return an empty array if less than two items
